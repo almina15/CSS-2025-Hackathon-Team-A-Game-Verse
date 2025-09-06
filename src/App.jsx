@@ -16,7 +16,7 @@ const App = () => {
   const [wishlist, setWishlist] = useState(() => {
     const saved = localStorage.getItem("wishlist");
     const initialValue = JSON.parse(saved);
-    return initialValue || "";
+    return initialValue || [];
   });
   const [searchTerm, setSearchTerm] = useState(""); 
 
