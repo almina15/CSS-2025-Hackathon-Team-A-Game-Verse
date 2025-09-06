@@ -45,7 +45,7 @@ const Navbar = () => {
   return (
     <header className="navbar">
       <div className="logo">
-        <Link to="/">🎮 GameHub</Link>
+        <Link to="/">🎮 GameVerse</Link>
       </div>
 
       <nav>
@@ -69,12 +69,8 @@ const Navbar = () => {
         )}
       </div>
 
-      {showRegister && (
-        <Register onRegister={handleRegister} onClose={() => setShowRegister(false)} />
-      )}
-      {showLogin && (
-        <Login onLogin={handleLogin} onClose={() => setShowLogin(false)} />
-      )}
+      {showRegister && <Register onRegister={handleRegister} />}
+      {showLogin && <Login onLogin={handleLogin} />}
     </header>
   );
 };
