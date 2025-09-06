@@ -5,11 +5,12 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import Register from "./Registration";
 import Login from "./Login";
 
-const Navbar = () => {
+const Navbar = ({ onSearch }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
   const [showRegister, setShowRegister] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleRegister = (username) => {
     setUser(username);
@@ -42,6 +43,14 @@ const Navbar = () => {
     return () => unsubscribe();
   }, []);
 
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchQuery(value);
+    if (onSearch) {
+      onSearch(value); // 🔥 send search term up to App.js
+    }
+  };
+
   return (
     <header className="navbar">
       <div className="logo">
@@ -54,6 +63,15 @@ const Navbar = () => {
           <li><Link to="/wishlist">Wishlist</Link></li>
         </ul>
       </nav>
+
+      {/* 🔍 Search bar */}
+      <input
+        type="text"
+        placeholder="Search games..."
+        value={searchQuery}
+        onChange={handleSearchChange}
+        className="search-bar"
+      />
 
       <div className="auth">
         {!isAuthenticated ? (
