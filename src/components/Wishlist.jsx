@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import Navbar from "./Navbar";
+import HomePage from "./HomePage";
+import Footer from "./Footer";
 
 // src/components/Wishlist.jsx
 export default function Wishlist({ items }) {
@@ -23,7 +26,7 @@ export default function Wishlist({ items }) {
   };
   return (
     <div className="app-container">
-      <Sidebar />
+      {/* <Sidebar /> */}
       <main>
         <Navbar />
 

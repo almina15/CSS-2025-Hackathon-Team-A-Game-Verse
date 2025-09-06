@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 import './index.css';

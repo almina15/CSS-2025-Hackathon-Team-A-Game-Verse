@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import GameCard from "../components/GameCard"; // reusable card component
 
-const HomePage = ({ wishlist, toggleWishlist }) => {
+const HomePage = () => {
   const API_URL = "https://api.rawg.io/api/games";
   const API_KEY = "1e5139d26e0449aeaee838bd6fd1fa75";
 
@@ -35,11 +35,11 @@ const HomePage = ({ wishlist, toggleWishlist }) => {
           <div className="card-content">
             <h3 className="card-title">{game.name}</h3>
             <p>Released: {game.released}</p>
-            <button onClick={() => toggleWishlist(game)}>
+            {/* <button onClick={() => toggleWishlist(game)}>
               {wishlist.find((g) => g.id === game.id)
                 ? "Remove from Wishlist"
                 : "Add to Wishlist"}
-            </button>
+            </button> */}
           </div>
         </div>
       ))}
