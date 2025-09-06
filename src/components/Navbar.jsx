@@ -47,33 +47,37 @@ const Navbar = ({ onSearch }) => {
     const value = e.target.value;
     setSearchQuery(value);
     if (onSearch) {
-      onSearch(value); // 🔥 send search term up to App.js
+      onSearch(value);
     }
   };
 
+  // ✅ Here is the fixed return
   return (
     <header className="navbar">
-      <div className="logo">
-        <Link to="/">🎮 GameVerse</Link>
+      {/* LEFT */}
+      <div className="nav-left">
+        <div className="logo">
+          <Link to="/">🎮 GameVerse</Link>
+        </div>
+        <nav className="nav-links">
+          <Link to="/">Home</Link>
+          <Link to="/wishlist">Wishlist</Link>
+        </nav>
       </div>
 
-      <nav>
-        <ul className="nav-links">
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/wishlist">Wishlist</Link></li>
-        </ul>
-      </nav>
+      {/* CENTER */}
+      <div className="nav-center">
+        <input
+          type="text"
+          placeholder="Search games..."
+          value={searchQuery}
+          onChange={handleSearchChange}
+          className="search-bar"
+        />
+      </div>
 
-      {/* 🔍 Search bar */}
-      <input
-        type="text"
-        placeholder="Search games..."
-        value={searchQuery}
-        onChange={handleSearchChange}
-        className="search-bar"
-      />
-
-      <div className="auth">
+      {/* RIGHT */}
+      <div className="nav-right">
         {!isAuthenticated ? (
           <>
             <button onClick={() => setShowRegister(true)}>Register</button>
