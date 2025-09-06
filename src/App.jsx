@@ -26,7 +26,7 @@ const App = () => {
   }, [wishlist]);
   console.log(wishlist)
   const toggleWishlist = (game) => {
-    const isWishlisted = wishlist.some((g) => g.id === game.id);
+    const isWishlisted = wishlist?.some((g) => g.id === game.id);
     if (isWishlisted) {
       setWishlist(wishlist.filter((g) => g.id !== game.id));
     } else {

@@ -29,7 +29,7 @@ const HomePage = ({ wishlist, toggleWishlist, searchTerm }) => {
   return (
     <div className="grid">
       {filteredGames?.map((game) => {
-        const isWishlisted = wishlist.some((g) => g.id === game.id);
+        const isWishlisted = wishlist?.some((g) => g.id === game.id);
         return (
           <div key={game.id} className="card">            
   <img src={game.background_image || "/placeholder.svg"} alt={game.name} />            
