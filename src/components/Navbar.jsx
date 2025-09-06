@@ -68,8 +68,12 @@ const Navbar = () => {
         )}
       </div>
 
-      {showRegister && <Register onRegister={handleRegister} />}
-      {showLogin && <Login onLogin={handleLogin} />}
+      {showRegister && (
+        <Register onRegister={handleRegister} onClose={() => setShowRegister(false)} />
+      )}
+      {showLogin && (
+        <Login onLogin={handleLogin} onClose={() => setShowLogin(false)} />
+      )}
     </header>
   );
 };

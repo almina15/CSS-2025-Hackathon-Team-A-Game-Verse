@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import "./Registration.css";
 
-const Register = ({ onRegister }) => {
+const Register = ({ onRegister, onClose }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -28,6 +28,7 @@ const Register = ({ onRegister }) => {
   return (
     <div className="overlay">
       <div className="modal">
+        <button className="close-btn" onClick={onClose}>✖</button>
         <h2 className="title">Create an Account</h2>
 
         {error && <p className="error">{error}</p>}

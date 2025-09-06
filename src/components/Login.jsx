@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import "./Login.css";
 
-const Login = ({ onLogin }) => {
+const Login = ({ onLogin, onClose }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -28,6 +28,7 @@ const Login = ({ onLogin }) => {
   return (
     <div className="overlay">
       <div className="modal">
+        <button className="close-btn" onClick={onClose}>✖</button>
         <h2 className="title">Login</h2>
 
         {error && <p className="error">{error}</p>}
