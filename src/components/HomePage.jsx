@@ -28,7 +28,7 @@ const HomePage = ({ wishlist, toggleWishlist, searchTerm }) => {
 
   return (
     <div className="grid">
-      {filteredGames.map((game) => {
+      {filteredGames?.map((game) => {
         const isWishlisted = wishlist.some((g) => g.id === game.id);
         return (
           <div key={game.id} className="card">            
