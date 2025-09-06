@@ -47,7 +47,7 @@ const Navbar = ({ onSearch }) => {
     const value = e.target.value;
     setSearchQuery(value);
     if (onSearch) {
-      onSearch(value); // 🔥 send search term up to App.js
+      onSearch(value);
     }
   };
 
@@ -64,7 +64,6 @@ const Navbar = ({ onSearch }) => {
         </ul>
       </nav>
 
-      {/* 🔍 Search bar */}
       <input
         type="text"
         placeholder="Search games..."
@@ -87,8 +86,19 @@ const Navbar = ({ onSearch }) => {
         )}
       </div>
 
-      {showRegister && <Register onRegister={handleRegister} />}
-      {showLogin && <Login onLogin={handleLogin} />}
+      {showRegister && (
+        <Register
+          onRegister={handleRegister}
+          onClose={() => setShowRegister(false)}
+        />
+      )}
+
+      {showLogin && (
+        <Login
+          onLogin={handleLogin}
+          onClose={() => setShowLogin(false)}
+        />
+      )}
     </header>
   );
 };
