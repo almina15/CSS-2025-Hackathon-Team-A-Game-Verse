@@ -1,54 +1,24 @@
-import { useEffect, useState } from "react";
-import Navbar from "./Navbar";
-import HomePage from "./HomePage";
-import Footer from "./Footer";
-
-// src/components/Wishlist.jsx
-export default function Wishlist({ items }) {
-    // ✅ Wishlist state (load from localStorage if available)
-  const [wishlist, setWishlist] = useState(() => {
-    const saved = localStorage.getItem("wishlist");
-    return saved ? JSON.parse(saved) : [];
-  });
-
-  // ✅ Save wishlist whenever it changes
-  useEffect(() => {
-    localStorage.setItem("wishlist", JSON.stringify(wishlist));
-  }, [wishlist]);
-
-  // ✅ Add/remove game from wishlist
-  const toggleWishlist = (game) => {
-    if (wishlist.find((g) => g.id === game.id)) {
-      setWishlist(wishlist.filter((g) => g.id !== game.id));
-    } else {
-      setWishlist([...wishlist, game]);
-    }
-  };
+const Wishlist = ({ wishlist, toggleWishlist }) => {
   return (
-    <div className="app-container">
-      {/* <Sidebar /> */}
-      <main>
-        <Navbar />
-
-        {/* Pass wishlist + toggle to HomePage */}
-        <HomePage wishlist={wishlist} toggleWishlist={toggleWishlist} />
-
-        {/* Wishlist Section */}
-        <div className="wishlist">
-          <h2>My Wishlist</h2>
-          {wishlist.length === 0 ? (
-            <p>No games in wishlist yet</p>
-          ) : (
-            wishlist.map((game) => (
-              <div key={game.id} className="wishlist-item">
-                {game.title}
+    <div>
+      <h2>My Wishlist</h2>
+      <div className="grid">
+        {wishlist.length === 0 ? (
+          <p>Your wishlist is empty.</p>
+        ) : (
+          wishlist.map((game) => (
+            <div key={game.id} className="card">
+              <img src={game.background_image} alt={game.name} />
+              <div className="card-content">
+                <h3>{game.name}</h3>
+                <button onClick={() => toggleWishlist(game)}>Remove</button>
               </div>
-            ))
-          )}
-        </div>
-
-        <Footer />
-      </main>
+            </div>
+          ))
+        )}
+      </div>
     </div>
   );
-}
+};
+
+export default Wishlist;

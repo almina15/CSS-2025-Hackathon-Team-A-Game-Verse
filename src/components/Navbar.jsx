@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { auth } from "../firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import Register from "./Registration";
@@ -43,14 +44,14 @@ const Navbar = () => {
 
   return (
     <header className="navbar">
-      <div className="logo">🎮 GameHub</div>
+      <div className="logo">
+        <Link to="/">🎮 GameHub</Link>
+      </div>
 
       <nav>
         <ul className="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#games">Games</a></li>
-          <li><a href="#reviews">Reviews</a></li>
-          <li><a href="#news">News</a></li>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/wishlist">Wishlist</Link></li>
         </ul>
       </nav>
 
