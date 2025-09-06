@@ -1,38 +1,23 @@
-const Navbar = () => {
-    const handleSearch = (e) => {
-        e.preventDefault();
-        const query = e.target.search.value;
-        console.log("Searching for:", query);
-       
-      }
-    return ( 
-        <header className="header">
-        <div className="header-content">
-          <div className="logo">🎮 GameHub</div>
-          <nav>
-            <ul className="nav">
-              <li>
-                <a href="#home">Home</a>
-              </li>
-              <li>
-                <a href="#games">Games</a>
-              </li>
-              <li>
-                <a href="#reviews">Reviews</a>
-              </li>
-              <li>
-                <a href="#news">News</a>
-              </li>
-            </ul>
-          </nav>
-          <form onSubmit={handleSearch}>
-            <input type="text" name="search" placeholder="Search games..." className="search-bar" />
-          </form>
+export default function Navbar() {
+  return (
+    <nav className="navbar">
+      <div className="navbar-container">
+        {/* Logo */}
+        <a href="/" className="logo">GameVerse</a>
+
+        {/* Links */}
+        <div className="nav-links">
+          <a href="/">Home</a>
+          <a href="/games">Games</a>
+          <a href="/reviews">Reviews</a>
+          <a href="/news">News</a>
         </div>
-      </header>
-     );
 
+        {/* Search bar */}
+        <div className="search">
+          <input type="text" placeholder="Search games..." />
+        </div>
+      </div>
+    </nav>
+  );
 }
- 
-export default Navbar;
-

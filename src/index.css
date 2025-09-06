@@ -1,145 +1,235 @@
-/* Grid layout for all cards */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
-  gap: 1rem;
-  padding: 1rem;
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Card styles */
+body {
+  font-family: system-ui, sans-serif;
+  background: #181616;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Layout */
+.app-container {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: 100vh;
+}
+
+main {
+  padding: 1.5rem;
+}
+
+/* Sidebar */
+.sidebar {
+  background: #52357B;
+  color: #fff;
+  padding: 2rem 1rem;
+}
+
+.sidebar h2 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  margin: 0.5rem 0;
+}
+
+.sidebar a {
+  color: #B2D8CE;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.sidebar a:hover {
+  color: #648DB3;
+}
+
+/* GameCard */
 .card {
-  background: #fff;
-  border-radius: 1rem; /* like rounded-2xl */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+  background: #ddd;
+  border-radius: 10px;
   overflow: hidden;
-  transition: transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
 }
 
 .card:hover {
-  transform: scale(1.03); /* small hover zoom */
+  transform: scale(1.03);
 }
 
 .card img {
   width: 100%;
-  height: 160px; /* like h-40 */
+  height: 180px;
   object-fit: cover;
 }
 
 .card-content {
-  padding: 1rem; /* like p-4 */
+  padding: 1rem;
 }
 
 .card-title {
-  font-size: 1.25rem; /* text-xl */
+  font-size: 1.1rem;
   font-weight: bold;
+  color: #52357B;
   margin-bottom: 0.5rem;
 }
 
 .card-text {
-  color: gray;
   font-size: 0.9rem;
+  color: #5459AC;
 }
 
-/* NAVBAR */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--card);
-  color: var(--card-foreground);
-  padding: 1rem 2rem;
-  border-bottom: 2px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-/* Logo */
-.navbar-logo {
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: var(--primary);
-  letter-spacing: 1px;
-}
-
-/* Links */
-.navbar-links {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-}
-
-.navbar-links a {
-  text-decoration: none;
-  color: var(--foreground);
-  font-weight: 500;
-  position: relative;
-  transition: color 0.2s ease-in-out;
-}
-
-.navbar-links a::after {
-  content: "";
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  bottom: -4px;
-  left: 0;
-  background-color: var(--primary);
-  transition: width 0.3s ease-in-out;
-}
-
-.navbar-links a:hover {
-  color: var(--primary);
-}
-
-.navbar-links a:hover::after {
-  width: 100%;
-}
-
-/* Button */
-.navbar-btn {
-  background: var(--primary);
-  color: var(--primary-foreground);
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius);
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.navbar-btn:hover {
-  background: var(--accent);
-  transform: scale(1.05);
-}
-
-.navbar-links a:hover {
-  color: var(--primary);
-}
-
-/* FOOTER */
-.footer {
-  background: var(--card);
-  color: var(--card-foreground);
-  text-align: center;
-  padding: 1.5rem;
-  margin-top: 2rem;
-  border-top: 1px solid var(--border);
-}
-
-.footer-links {
-  margin-top: 0.5rem;
-  display: flex;
-  justify-content: center;
+/* Grid for games */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1rem;
 }
 
-.footer-links a {
-  color: var(--foreground);
+/* Wishlist */
+.wishlist {
+  margin-top: 2rem;
+}
+
+.wishlist h2 {
+  margin-bottom: 1rem;
+  color: #5459AC;
+}
+
+.wishlist-item {
+  background: #B2D8CE;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+
+/* Footer */
+.footer {
+  background:#1f225e;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Navbar container */
+.navbar {
+  background-color: #1e1e2f;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Flex container */
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;  
+}
+
+.logo-icon {
+  font-size: 1.5rem;
+  color: #a78bfa;
+  padding: 10px;
+}
+
+/* Navbar container */
+.navbar {
+  background-color: #1f225e;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 100px;
+}
+
+/* Flex layout */
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: white;
   text-decoration: none;
+}
+
+/* Navigation links */
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #ddd;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #a78bfa;
+}
+
+/* Search bar */
+.search input {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
   font-size: 0.9rem;
 }
 
-.footer-links a:hover {
-  color: var(--primary);
+.search input:focus {
+  box-shadow: 0 0 0 2px #a78bfa;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .search {
+    width: 100%;
+  }
+
+  .search input {
+    width: 100%;
+  }
 }
