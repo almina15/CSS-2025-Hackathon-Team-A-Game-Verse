@@ -1,7 +1,7 @@
 const Wishlist = ({ wishlist, toggleWishlist }) => {
   return (
-    <div>
-      <h2>My Wishlist</h2>
+    <div style={{marginBottom: "5rem"}}>
+      <h2 style={{color: "white", marginTop: "2rem", marginLeft: "2rem"}}>My Wishlist</h2>
       <div className="grid">
         {wishlist.length === 0 ? (
           <p>Your wishlist is empty.</p>

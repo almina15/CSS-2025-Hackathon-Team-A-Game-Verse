@@ -31,16 +31,16 @@ const HomePage = ({ wishlist, toggleWishlist, searchTerm }) => {
       {filteredGames.map((game) => {
         const isWishlisted = wishlist.some((g) => g.id === game.id);
         return (
-          <div key={game.id} className="card">
-            <img src={game.background_image} alt={game.name} />
-            <div className="card-content">
-              <h3 className="card-title">{game.name}</h3>
-              <p>Released: {game.released}</p>
-              <button onClick={() => toggleWishlist(game)}>
-                {isWishlisted ? "Remove from Wishlist" : "Add to Wishlist"}
-              </button>
-            </div>
-          </div>
+          <div key={game.id} className="card">            
+  <img src={game.background_image || "/placeholder.svg"} alt={game.name} />            
+  <div className="card-content">              
+    <h3 className="card-title">{game.name}</h3>              
+    <p>Released: {game.released}</p>              
+    <button onClick={() => toggleWishlist(game)}>                
+      {isWishlisted ? "Remove from Wishlist" : "Add to Wishlist"}              
+    </button>            
+  </div>          
+</div>
         );
       })}
     </div>

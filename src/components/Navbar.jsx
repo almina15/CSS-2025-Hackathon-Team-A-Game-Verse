@@ -80,10 +80,10 @@ const Navbar = ({ onSearch }) => {
       {/* RIGHT */}
       <div className="nav-right">
         {!isAuthenticated ? (
-          <>
-            <button onClick={() => setShowRegister(true)}>Register</button>
-            <button onClick={() => setShowLogin(true)}>Login</button>
-          </>
+         <>            
+  <button className="auth-btn register-btn" onClick={() => setShowRegister(true)}>Register</button>            
+  <button className="auth-btn login-btn" onClick={() => setShowLogin(true)}>Login</button>          
+</>
         ) : (
           <>
             <span className="welcome">Welcome, {user}</span>
