@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const HomePage = ({ wishlist, toggleWishlist }) => {
+const HomePage = ({ wishlist, toggleWishlist, searchTerm }) => {
   const API_URL = "https://api.rawg.io/api/games";
   const API_KEY = "1e5139d26e0449aeaee838bd6fd1fa75";
 
@@ -21,9 +21,14 @@ const HomePage = ({ wishlist, toggleWishlist }) => {
     fetchGames();
   }, []);
 
+  // 🔍 Apply filtering based on Navbar input
+  const filteredGames = games.filter((game) =>
+    game.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="grid">
-      {games.map((game) => {
+      {filteredGames.map((game) => {
         const isWishlisted = wishlist.some((g) => g.id === game.id);
         return (
           <div key={game.id} className="card">

@@ -14,6 +14,7 @@ import './index.css';
 
 const App = () => {
   const [wishlist, setWishlist] = useState([]);
+  const [searchTerm, setSearchTerm] = useState(""); 
 
   useEffect(() => {
     const storedWishlist = localStorage.getItem('wishlist');
@@ -37,11 +38,17 @@ const App = () => {
 
   return (
     <Router>
-      <Navbar />
+      <Navbar onSearch={setSearchTerm} /> {/* pass callback */}
       <Routes>
         <Route
           path="/"
-          element={<HomePage wishlist={wishlist} toggleWishlist={toggleWishlist} />}
+          element={
+            <HomePage
+              wishlist={wishlist}
+              toggleWishlist={toggleWishlist}
+              searchTerm={searchTerm} // pass query
+            />
+          }
         />
         <Route
           path="/wishlist"
