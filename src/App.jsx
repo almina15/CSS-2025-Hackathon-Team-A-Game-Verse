@@ -13,20 +13,18 @@ import Login from './components/Login';
 import './index.css';
 
 const App = () => {
-  const [wishlist, setWishlist] = useState([]);
+  const [wishlist, setWishlist] = useState(() => {
+    const saved = localStorage.getItem("wishlist");
+    const initialValue = JSON.parse(saved);
+    return initialValue || "";
+  });
   const [searchTerm, setSearchTerm] = useState(""); 
 
   useEffect(() => {
-    const storedWishlist = localStorage.getItem('wishlist');
-    if (storedWishlist) {
-      setWishlist(JSON.parse(storedWishlist));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    console.log(localStorage.getItem('wishlist'))
   }, [wishlist]);
-
+  console.log(wishlist)
   const toggleWishlist = (game) => {
     const isWishlisted = wishlist.some((g) => g.id === game.id);
     if (isWishlisted) {
