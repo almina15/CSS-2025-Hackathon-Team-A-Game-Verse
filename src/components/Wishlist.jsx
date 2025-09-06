@@ -6,7 +6,7 @@ const Wishlist = ({ wishlist, toggleWishlist }) => {
         {wishlist.length === 0 ? (
           <p>Your wishlist is empty.</p>
         ) : (
-          wishlist.map((game) => (
+          wishlist?.map((game) => (
             <div key={game.id} className="card">
               <img src={game.background_image} alt={game.name} />
               <div className="card-content">
